@@ -70,8 +70,7 @@ class RBTidy (GObject.Object, Peas.Activatable):
 		db.commit ()
 	
 	def get_regex_match(self,matchobj):
-		if matchobj.group(1):
-			return matchobj.group(1)
+		return matchobj.group(1)
 	
 
 class RBTidyTopPanel(Gtk.HBox):
