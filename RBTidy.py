@@ -56,18 +56,17 @@ class RBTidy (GObject.Object, Peas.Activatable):
 		selection = v.get_selected_entries()
 		for entry in selection:
 			ttl = entry.get_string(self.prop_type)
-			if entry in selection:
 			
-				if replace == "::REGEX-MATCH":
-					stripped_ttl = re.sub(search, self.get_regex_match, ttl).strip(' \t\n\r')
+			if replace == "::REGEX-MATCH":
+				stripped_ttl = re.sub(search, self.get_regex_match, ttl).strip(' \t\n\r')
+			else:
+				stripped_ttl = re.sub(search, replace, ttl).strip(' \t\n\r')
+			if ttl != stripped_ttl and len(stripped_ttl)>0:
+				if test:
+					self.toppanel.testmode_outp.set_text(stripped_ttl)
+					
 				else:
-					stripped_ttl = re.sub(search, replace, ttl).strip(' \t\n\r')
-				if ttl != stripped_ttl and len(stripped_ttl)>0:
-					if test:
-						self.toppanel.testmode_outp.set_text(stripped_ttl)
-						
-					else:
-						db.entry_set(entry,self.prop_type,stripped_ttl)
+					db.entry_set(entry,self.prop_type,stripped_ttl)
 		db.commit ()
 	
 	def get_regex_match(self,matchobj):
