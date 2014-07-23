@@ -144,6 +144,8 @@ class RBTidyPanel(Gtk.HBox):
 		btn.connect("clicked", self.capitalise)
 		hbox.add(btn)
 		
+		label = Gtk.Label("TEST:")
+		hbox.pack_start(label, False, False, 0)
 		
 		hbox.add(self.test_switch)
 		
@@ -183,26 +185,26 @@ class RBTidyPanel2(Gtk.HBox):
 		
 		hbox = Gtk.HBox()
 		
-		label = Gtk.Label("Move from:")
-		hbox.pack_start(label, False, False, 5)
+		label = Gtk.Label("Copy from:")
+		hbox.pack_start(label, False, False, 0)
 		
 		self.startselect = Gtk.ComboBoxText().new_with_entry()
 		self.startselect.append(None,"[Start]")
 		for s in _SLIST:
 			self.startselect.append(None,s)
 		self.startselect.set_active(0)
-		hbox.pack_start(self.startselect, False, False, 5)
+		hbox.pack_start(self.startselect, False, False, 0)
 		
 		label = Gtk.Label("to:")
-		hbox.pack_start(label, False, False, 5)
+		hbox.pack_start(label, False, False, 0)
 		
 		self.endselect = Gtk.ComboBoxText.new_with_entry()
-		hbox.pack_start(self.endselect, False, False, 5)
+		hbox.pack_start(self.endselect, False, False, 0)
 		self.endselect.append(None,"[End]")
 		for s in _SLIST:
 			self.endselect.append(None,s)
 		label = Gtk.Label("to:")
-		hbox.pack_start(label, False, False, 5)
+		hbox.pack_start(label, False, False, 0)
 		
 		
 		self.moveto = Gtk.ComboBoxText()
@@ -211,13 +213,13 @@ class RBTidyPanel2(Gtk.HBox):
 		self.moveto.append(None,"album field")
 		self.moveto.append(None,"genre field")
 		self.moveto.set_active(0)
-		hbox.pack_start(self.moveto, False, False, 5)
+		hbox.pack_start(self.moveto, False, False, 0)
 		
 		label = Gtk.Label("| Rem. from src?")
-		hbox.pack_start(label, False, False, 5)
+		hbox.pack_start(label, False, False, 0)
 		
 		self.remfromsrc = Gtk.Switch()
-		hbox.pack_start(self.remfromsrc, False, False, 5)
+		hbox.pack_start(self.remfromsrc, False, False, 0)
 		
 		btn = Gtk.Button("Move")
 		btn.connect("clicked", self.do_move)
@@ -287,10 +289,10 @@ class RBTidyPanel3(Gtk.HBox):
 		hbox = Gtk.HBox()
 		
 		label = Gtk.Label("Replace:")
-		hbox.pack_start(label, False, False, 5)
+		hbox.pack_start(label, False, False, 0)
 		
 		self.search_entry = Gtk.ComboBoxText.new_with_entry()
-		hbox.pack_start(self.search_entry, False, False, 5)
+		hbox.pack_start(self.search_entry, False, False, 0)
 		self.search_entry.append(None,"REGEX::[()\[\]{}]+")
 		self.search_entry.append(None,"REGEX::\[[^\[\]]+\]|\([^\)|(]+\)|{[^{}]+}")
 		self.search_entry.append(None,"REGEX::\(([^\)\(]+)\)")
@@ -300,11 +302,11 @@ class RBTidyPanel3(Gtk.HBox):
 		
 		self.search_entry.set_active(3)
 		label = Gtk.Label("With:")
-		hbox.pack_start(label, False, False, 5)
+		hbox.pack_start(label, False, False, 0)
 		
 		self.replacement_entry = Gtk.ComboBoxText.new_with_entry()
 		self.replacement_entry.append(None,"::REGEX-MATCH")
-		hbox.pack_start(self.replacement_entry, False, False, 5)
+		hbox.pack_start(self.replacement_entry, False, False, 0)
 		
 		btn = Gtk.Button("Replace")
 		btn.connect("clicked", self.replace)
