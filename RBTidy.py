@@ -170,7 +170,7 @@ class RBTidyPanel(Gtk.HBox):
 				outp += s.capitalize()+" "
 			if ttl != outp and len(outp)>0:
 				if self.set_testmode:
-					self._RBT.toppanel.testmode_outp.set_text(new_str)
+					self._RBT.toppanel.testmode_outp.set_text(outp)
 					return
 				else:
 					db.entry_set(entry,self._RBT.prop_type,outp.strip(' \t\n\r') )
