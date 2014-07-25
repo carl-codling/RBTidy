@@ -78,7 +78,6 @@ class RBTidyTopPanel(Gtk.HBox):
 		Gtk.HBox.__init__(self)	
 		self._RBT = _RBT
 		
-		
 		vbox = Gtk.HBox()
 		
 		self.editselect = Gtk.ComboBoxText()
@@ -116,7 +115,6 @@ class RBTidyPanel(Gtk.HBox):
 		Gtk.HBox.__init__(self)	
 		self._RBT = _RBT
 		
-		
 		hbox = Gtk.HBox()
 		
 		self.testmode = False
@@ -124,21 +122,20 @@ class RBTidyPanel(Gtk.HBox):
 		self.test_switch.connect("notify::active", self.set_testmode)
 		
 		btn = Gtk.Button("Strip track no.")
-		btn.connect("clicked", self._RBT.regex_replace, '^[0-9\s?]+\s?[\-\.\:\;\\\/\[\]\s\_]+', ' ', self.set_testmode)
+		btn.connect("clicked", self._RBT.regex_replace, '^[0-9\s?]+\s?[\-\.\:\;\\\/\[\]\s\_]+', ' ', self.testmode)
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Strip special")
-		btn.connect("clicked", self._RBT.regex_replace, '\W+', '', self.set_testmode)
+		btn.connect("clicked", self._RBT.regex_replace, '\W+', '', self.testmode)
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Special to space")
-		btn.connect("clicked", self._RBT.regex_replace, '\W+', ' ', self.set_testmode)
+		btn.connect("clicked", self._RBT.regex_replace, '\W+', ' ', self.testmode)
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Special to -")
-		btn.connect("clicked", self._RBT.regex_replace, '\W+', '-', self.set_testmode)
+		btn.connect("clicked", self._RBT.regex_replace, '\W+', '-', self.testmode)
 		hbox.add(btn)
-		
 		
 		btn = Gtk.Button("Capitalise")
 		btn.connect("clicked", self.capitalise)
@@ -150,9 +147,9 @@ class RBTidyPanel(Gtk.HBox):
 		hbox.add(self.test_switch)
 		
 		self.add(hbox)
-		
 		self.show_all()
-	
+		
+		
 	def set_testmode(self,a,b):
 		self.testmode = self.test_switch.get_active()	
 		
@@ -169,7 +166,7 @@ class RBTidyPanel(Gtk.HBox):
 			for s in attl:
 				outp += s.capitalize()+" "
 			if ttl != outp and len(outp)>0:
-				if self.set_testmode:
+				if self.testmode:
 					self._RBT.toppanel.testmode_outp.set_text(outp)
 					return
 				else:
