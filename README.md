@@ -26,7 +26,7 @@ __Row 3__
 Replace a segment of the text with something else
 
 - [SELECT/INPUT] Replace: a string or regular expression (see in the dropdown options for examples) to replace in the selected songs/field
-- [SELECT/INPUT] With: the replacement string - or select ::REGEX-MATCH from the drop down to replace the whole text with the first match from a regular expression string set in the Replace field above
+- [SELECT/INPUT] With: the replacement string - or select ::REGEX-MATCH from the drop down to replace the whole text with the first substring match from a regular expression string set in the Replace field above
 - [BTN] Replace
 - [BTN] Test
 
