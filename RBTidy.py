@@ -126,15 +126,15 @@ class RBTidyPanel(Gtk.HBox):
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Strip special")
-		btn.connect("clicked", self.regex_replace, '\W+', '')
+		btn.connect("clicked", self.regex_replace, '[\W_]+', '')
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Special to space")
-		btn.connect("clicked", self.regex_replace, '\W+', ' ')
+		btn.connect("clicked", self.regex_replace, '[\W_]+', ' ')
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Special to -")
-		btn.connect("clicked", self.regex_replace, '\W+', '-')
+		btn.connect("clicked", self.regex_replace, '[\W_]+', '-')
 		hbox.add(btn)
 		
 		btn = Gtk.Button("Capitalise")
